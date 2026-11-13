@@ -40,13 +40,6 @@ DEFAULT_DECK_DIR = local_path("YDK_DECK_DIR")
 # 仍然受 exclusive / 限 1 / 禁卡表约束（那几类本来就不进普通池）。
 DEFAULT_COMBO_DIR = local_path("YDK_COMBO_DIR")
 # 黑名单：--use-exclude 时才会读，里面的卡号一律不进卡池
-# 永久排除（不依赖 --use-exclude，空集=不使用）。**当前为空，不是遗漏**：
-#   2026-11-11 曾在此硬编码 {90660762} 流星黑龙，2026-11-13 用户澄清「只是不想让
-#   408.cdb 里有流星黑龙」，并非要一个代码级黑名单 —— 而该卡早已从源卡组
-#   轮抽服务器/408 暗黑界.ydk 的 #extra 段删除（76 个 ydk 全量扫描确认 0 命中），
-#   所以移除硬编码后重跑，408.cdb 依然不含它。改由源数据（ydk）决定卡池内容。
-# 若以后要「临时整批剔卡」，用 DEFAULT_EXCLUDE_YDK 指向的待删除.ydk，别改这里。
-FORCE_EXCLUDE_CODES = set()
 DEFAULT_EXCLUDE_YDK = local_path("YDK_EXCLUDE_FILE")
 # 408 禁卡（limits.json 的 forbidden，2006.3 表共 28 张）是否留在 408.cdb 里。
 # True （当前）：28 张禁卡的数据进 cdb，但 2pick/exclusive.lua 会把它们标成
@@ -229,10 +222,7 @@ def main():
 
     # ---- 黑名单（--exclude-ydk）----
     exclude_files = [] if a.no_exclude else (a.exclude_ydk or [DEFAULT_EXCLUDE_YDK])
-    excluded = set(FORCE_EXCLUDE_CODES)
-    if FORCE_EXCLUDE_CODES:
-        print("永久排除 %d 张：%s" % (len(FORCE_EXCLUDE_CODES),
-              "、".join(pname.get(c, str(c)) for c in sorted(FORCE_EXCLUDE_CODES))))
+    excluded = set()
     for ef in exclude_files:
         if not os.path.exists(ef):
             print("  [提示] 剔除名单不存在，跳过：%s" % ef)
