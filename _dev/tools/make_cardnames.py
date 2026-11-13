@@ -32,11 +32,12 @@ CDB = os.path.join(HERE, "2pick", "408.cdb")
 OUT = os.path.join(HERE, "2pick", "cardnames.txt")
 
 # 与 make_draft_pool.py 的 FORCE_EXCLUDE_CODES 保持同一份：卡池里被永久剔除的卡，
-# 卡名表也不要再留（否则重跑一次生成链，死数据又从 _pool_backup 里冒出来）。
+# 卡名表也不要再留。**两边现在都是空集**（2026-11-13 撤掉了流星黑龙的硬编码，
+# 改由源 ydk 决定卡池内容），所以这份过滤目前不生效，保留只是为了联动。
 try:
     from make_draft_pool import FORCE_EXCLUDE_CODES as EXCLUDE_CODES
 except Exception:
-    EXCLUDE_CODES = {90660762}   # 流星黑龙（导入失败时的兜底）
+    EXCLUDE_CODES = set()   # 兜底：导入失败时不过滤任何卡
 
 
 def collect(path, names):
