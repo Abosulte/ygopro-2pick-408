@@ -1,0 +1,10 @@
+# Linux 部署包统一 LF；Windows 专用 .bat 是 GBK+CRLF，必须原样保留
+* text=auto eol=lf
+
+# 二进制 / 非 UTF-8 文件，禁止任何行尾或编码转换
+*.bat  -text
+*.cdb  -text
+*.ypk  -text
+*.png  -text
+*.jpg  -text
+*.jpeg -text

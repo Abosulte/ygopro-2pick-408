@@ -1,0 +1,33 @@
+# 私有 / 部署期产物：含本机参数、随机凭据或开发机路径，绝不进仓库
+# 注意：gitignore 不支持行内注释，注释必须单独占一行
+
+# 部署参数（复制 deploy.env.example 后按服务器填写）
+/deploy.env
+/deploy.env.local
+/.deploy-env
+
+# 部署期生成的 srvpro 配置（权限 600）
+/config/config.json
+
+# 本地生成器的本机绝对路径
+/_dev/tools/local-paths.json
+
+# 第三方资源包与自备资源包
+*.ypk
+*.tar.gz
+*.tgz
+/base-408/
+
+# 备份、缓存、临时产物
+_dev/backup/
+**/__pycache__/
+*.py[cod]
+.bak-*
+*.bak-*
+*.bak
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 2pick/ 与 expansions/ 下的规则数据是部署必需资源，不要加全局忽略

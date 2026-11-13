@@ -1,0 +1,12 @@
+{
+  "_comment": "复制本文件为 local-paths.json（不会进 git），按自己机器的实际路径填写；也可改用同名环境变量覆盖。",
+  "MDPro3_DIR": "<MDPro3 安装目录>",
+  "YDK_DECK_DIR": "<MDPro3>/Deck/轮抽服务器",
+  "YDK_COMBO_DIR": "<MDPro3>/Deck/轮抽combo",
+  "YDK_EXCLUDE_FILE": "<MDPro3>/Deck/轮抽服务器/待删除.ydk",
+  "MDPro3_LOCALES_DIR": "<MDPro3>/Data/locales",
+  "TTT_MIX_YPK": "<MDPro3>/Expansions/TTT-MIX.ypk",
+  "LFLIST_CONF": "<408 客户端>/服务器文件/lflist.conf",
+  "SRC_408_CDB": "<408 客户端>/1_408_TTT.cdb",
+  "CARD_STATS_URL": ""
+}
