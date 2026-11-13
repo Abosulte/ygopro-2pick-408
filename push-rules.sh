@@ -110,7 +110,6 @@ echo "  内核 PickLog：$(strings -a "$RUN/ygopro" 2>/dev/null | grep -cx PickL
 echo "  卡名表 cardnames.txt：$(grep -c . "$RUN/2pick/cardnames.txt" 2>/dev/null || echo '（缺失，选卡记录会显示卡号）')"
 echo "卡池张数    ：$(sqlite3 "$RUN/2pick/408.cdb" 'select count(*) from datas' 2>/dev/null || echo '（无 sqlite3，跳过）')"
 echo "主题包除外  ：$(grep -Fc 'combo_banned[p][pk]=true' "$RUN/2pick/pick.lua" || true) 处（本轮拉黑，应为 1）"
-echo "流星黑龙    ：$(sqlite3 "$RUN/2pick/408.cdb" 'select count(*) from datas where id=90660762' 2>/dev/null || echo '（无 sqlite3）')（应为 0）"
 echo "仪式配对    ：$(grep -c '\]=' "$RUN/2pick/ritual.lua" || true) 条（怪兽+魔法）"
 # 三局两胜第二局跳换 side（v3.7，回到 v3.2 写法）。2pick 没有 side deck，
 # 不弹「更换副卡组」界面、第二局 BP/M2/EP 按钮正常、不会双弹保存录像：
